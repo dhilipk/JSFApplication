@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:a4j="http://richfaces.org/a4j"
+                template="/layout/page.xhtml">
+<ui:define name="body">
+    <h:form>
+        <h:panelGrid columns="3">
+            <h:outputText value="Credit Card :" />
+            <h:inputText id="creditCardNumber" value="#{user.creditCardNumber}" size="20" required="true">
+                <f:validator validatorId="creditCardValidator"/>
+            </h:inputText>
+            <h:message for="creditCardNumber" style="color:red" /><br/>
+            <h:inputText id="stringValidation" value="#{user.stringElement}" size="20" required="true" validatorMessage="Invalid String">
+                <f:validateLength maximum="10"></f:validateLength>
+            </h:inputText>
+            <h:message for="stringValidation" style="color:red" />
+        </h:panelGrid>
+        <h:commandButton value="Submit" action="app/result" />
+    </h:form>
+    <h:form>
+        <h3><h:outputText value = "#{msg['application.login.page']}" /></h3>
+        <h:inputText id="inputName" value="#{user.name}"></h:inputText>
+        <h:commandButton value = "Show Message">
+            <f:ajax execute="inputName" render="outputMessage"/>
+        </h:commandButton>
+        <h2><h:outputText id="outputMessage" value="#{user.name != null ? user.welcomeMessage : ''}" /></h2>
+    </h:form>
+</ui:define>
+</ui:composition>

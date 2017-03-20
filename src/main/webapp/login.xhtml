@@ -1,0 +1,31 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:a4j="http://richfaces.org/a4j"
+                template="/layout/page.xhtml">
+                
+    <ui:define name="body">
+        <h:form>
+            <h3><h:outputText value="#{hello.commandUsingJSF}"/></h3>
+            <h:commandButton action = "config" value = "Go to Config" />
+            <h:commandLink action="config" value="Go to Config"></h:commandLink> <br/>
+        </h:form>
+        <h:form> 
+            <h3><h:outputText value="#{hello.commandUsingBean}"></h:outputText> </h3>  
+            <h:commandButton action = "#{navigationController.moveToConfig}" value = "Go to Config" />
+            <h:commandLink action="#{navigationController.moveToErrors}" value="Go to Error Page"></h:commandLink>
+        </h:form>
+        <h:form id="loginForm">
+            <h3>Page Redirection</h3>
+            Redirection : <h:commandButton action = "home?faces-redirect=true" value = "Home Page" />
+            <h3>Login Page</h3>
+            <h:inputText value="#{loginAction.login}" id="loginName" required="true" requiredMessage="Please provide both login name and password"/><br/>
+            <h:inputSecret value="#{loginAction.password}" id="loginPassword"/>
+            <h:message for="loginName" style="color:red" /><br />
+            <h:commandButton action="${loginAction.authenticate()}" value="Submit" />
+        </h:form>
+    </ui:define>
+</ui:composition>

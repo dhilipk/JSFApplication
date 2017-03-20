@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <application>
+        <locale-config>
+            <default-locale>en</default-locale>
+            <supported-locale>fr</supported-locale>
+        </locale-config>
+        <resource-bundle>
+            <base-name>messages</base-name>
+            <var>msg</var>
+        </resource-bundle>
+    </application>
+    <managed-bean>
+        <managed-bean-name>currentDate</managed-bean-name>
+        <managed-bean-class>java.util.Date</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <converter>
+        <converter-id>dataFormatConverter</converter-id>
+        <converter-class>com.jsf.application.action.home.DataFormatConverter</converter-class>
+    </converter>
+    <validator>
+        <validator-id>creditCardValidator</validator-id>
+        <validator-class>com.jsf.application.action.home.CreditCardValidator</validator-class>
+    </validator>
+    <navigation-rule>
+        <from-view-id>login.xhtml</from-view-id> 
+
+        <navigation-case> 
+            <from-action>#{navigationController.moveToErrors}</from-action> 
+            <from-outcome>error</from-outcome> 
+            <to-view-id>errors.jsf</to-view-id> 
+        </navigation-case> 
+
+        <navigation-case> 
+            <from-action>#{navigationController.processPage2}</from-action> 
+            <from-outcome>page</from-outcome> 
+            <to-view-id>page2.jsf</to-view-id> 
+        </navigation-case> 
+    </navigation-rule>
+</faces-config>

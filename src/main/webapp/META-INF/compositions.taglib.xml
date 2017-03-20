@@ -1,0 +1,13 @@
+<?xml version = "1.0"?>
+<!DOCTYPE facelet-taglib PUBLIC
+"-//Sun Microsystems, Inc.//DTD Facelet Taglib 1.0//EN"
+"http://java.sun.com/dtd/facelet-taglib_1_0.dtd">
+
+<facelet-taglib>
+   <namespace>http://customtaglibrary.com/facelets/tags</namespace>
+   
+   <tag>
+      <tag-name>formattedDateTime</tag-name>
+      <source>../component/formattedDateTime.xhtml</source>
+   </tag>
+</facelet-taglib>

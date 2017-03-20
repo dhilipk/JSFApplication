@@ -1,0 +1,19 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:a4j="http://richfaces.org/a4j"
+                template="../layout/page.xhtml">
+    <ui:define name="body">
+        <h:outputText value="Results Page for Credit Card Number" />
+        <h3><h:outputText value="#{msg['homepage.message']}" /> </h3>
+        <h:form>
+                Language :
+            <h:selectOneMenu value="#{language.selectedLocale}" onchange="submit()" valueChangeListener="#{language.localeValueChangeListener}">
+                <f:selectItems value="#{language.availableLocales}" />
+            </h:selectOneMenu>
+        </h:form>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:a4j="http://richfaces.org/a4j"
+                template="/layout/page.xhtml">
+    <ui:define name="body">
+        <rich:dataTable value="#{appConfigurationAction.configDetails}" var="dl" width="100%">
+            <f:facet name="header">Configuration Details</f:facet>
+            <rich:column>
+                <f:facet name="header">Property</f:facet>
+                <h:outputText value="#{dl.configName}" />
+            </rich:column>
+            <rich:column>
+                <f:facet name="header">Value</f:facet>
+                <h:outputText value="#{dl.configValue}" />
+            </rich:column>
+        </rich:dataTable>
+        <h:panelGrid id="panal" columns="2" bgcolor="#cccccc">
+            #{appConfigurationAction.configDetails}
+        </h:panelGrid>
+    </ui:define>
+
+</ui:composition>
+
+
